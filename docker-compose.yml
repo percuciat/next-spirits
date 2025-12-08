@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_WS_URL=ws://localhost:8080
+    depends_on:
+      - ws-server
+    networks:
+      - yokai-network
+
+  ws-server:
+    build:
+      context: ./ws-server
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - WS_PORT=8080
+    networks:
+      - yokai-network
+
+networks:
+  yokai-network:
+    driver: bridge
+
