@@ -1,7 +1,2 @@
-export { ApiResponse } from "./responses";
-export type {
-  IApiSuccessResponse,
-  IApiErrorResponse,
-  TApiResponse,
-} from "./responses";
+export { ApiResponse } from "./apiResponses";
 export { apiClient } from "./apiClients";

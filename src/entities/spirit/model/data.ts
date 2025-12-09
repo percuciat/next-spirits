@@ -1,4 +1,4 @@
-import type { TSpirit } from "@/entities/spirit";
+import type { TSpirit } from "./types";
 
 export const spirits: TSpirit[] = [
   {

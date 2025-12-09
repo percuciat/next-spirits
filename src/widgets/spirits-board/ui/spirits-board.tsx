@@ -9,7 +9,7 @@ import {
   SpiritsBoardContent,
 } from "@/entities/spirit";
 import { useCaptureSpirit } from "@/features/capture-spirit";
-import { useSpiritsWebSocket } from "@/shared/lib";
+import { useSpiritsWebSocket } from "../hooks/useSpiritsWebsocket";
 
 export function SpiritsBoard() {
   useSpiritsWebSocket();

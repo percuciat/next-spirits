@@ -1,9 +1,6 @@
 import { API_BASE_URL } from "@/shared/config";
 
-export async function apiClient<T>(
-  endpoint: string,
-  options?: RequestInit
-): Promise<T> {
+export async function apiClient(endpoint: string, options?: RequestInit) {
   const url = `${API_BASE_URL}${endpoint}`;
 
   const response = await fetch(url, {

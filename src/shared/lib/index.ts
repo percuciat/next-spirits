@@ -1,2 +1,2 @@
-export { useSpiritsWebSocket } from './use-spirits-websocket';
+export { getStorageItem, setStorageItem, removeStorageItem } from "./storage";
 

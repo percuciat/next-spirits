@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { spirits } from "../../data";
+import { spirits } from "@/entities/spirit/model/data";
 import { ApiResponse } from "@/shared/api";
 
 export async function POST(
@@ -22,18 +22,13 @@ export async function POST(
     return ApiResponse.spiritNotFound();
   }
 
-  const spirit = spirits[spiritIndex];
-
-  if (spirit.status === "Captured") {
+  if (spirits[spiritIndex].status === "Captured") {
     return ApiResponse.alreadyCaptured();
   }
 
-  // Update spirit status
-  spirits[spiritIndex] = {
-    ...spirit,
+  return ApiResponse.captured({
+    ...spirits[spiritIndex],
     status: "Captured",
     lastSeen: new Date().toISOString(),
-  };
-
-  return ApiResponse.captured(spirits[spiritIndex]);
+  });
 }

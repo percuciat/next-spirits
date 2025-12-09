@@ -1,28 +1,8 @@
 import { NextResponse } from "next/server";
 import { TSpirit } from "@/entities/spirit";
-
-export interface IApiSuccessResponse<T = unknown> {
-  success: true;
-  data?: T;
-  message?: string;
-}
-
-export interface IApiErrorResponse {
-  success: false;
-  message: string;
-}
-
-export type TApiResponse<T = unknown> = IApiSuccessResponse<T> | IApiErrorResponse;
+import type { IApiErrorResponse } from "./types";
 
 export const ApiResponse = {
-  success<T>(data?: T, message?: string) {
-    return NextResponse.json({
-      success: true,
-      ...(data !== undefined && { data }),
-      ...(message && { message }),
-    } satisfies IApiSuccessResponse<T>);
-  },
-
   captured(spirit: TSpirit) {
     return NextResponse.json({
       success: true,
@@ -31,11 +11,8 @@ export const ApiResponse = {
     });
   },
 
-  error(message: string, status: number = 500) {
-    return NextResponse.json(
-      { success: false, message } satisfies IApiErrorResponse,
-      { status }
-    );
+  error(message: string, status: number): NextResponse<IApiErrorResponse> {
+    return NextResponse.json({ success: false, message }, { status });
   },
 
   notFound(message: string = "Resource not found") {
@@ -58,4 +35,3 @@ export const ApiResponse = {
     return this.badRequest("Spirit is already captured.");
   },
 };
-

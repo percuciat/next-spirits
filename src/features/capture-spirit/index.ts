@@ -1,2 +1,1 @@
-export { useCaptureSpirit } from './model/use-capture-spirit';
-
+export { useCaptureSpirit } from "./hooks/useCaptureSpirit";

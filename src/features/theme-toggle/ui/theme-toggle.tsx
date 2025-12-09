@@ -1,6 +1,6 @@
 "use client";
 
-import { useTheme } from "../model/theme-context";
+import { useTheme } from "../hooks/useTheme";
 import styles from "./theme-toggle.module.scss";
 
 export function ThemeToggle() {
@@ -12,13 +12,10 @@ export function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
     >
-      <span className={styles.icon}>
-        {theme === "dark" ? "☀️" : "🌙"}
-      </span>
+      <span className={styles.icon}>{theme === "dark" ? "☀️" : "🌙"}</span>
       <span className={styles.label}>
         {theme === "dark" ? "Light" : "Dark"}
       </span>
     </button>
   );
 }
-

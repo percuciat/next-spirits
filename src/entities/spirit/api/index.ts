@@ -1,2 +1,3 @@
-export { fetchSpirits, captureSpirit } from './spirits-api';
+export { captureSpirit } from './captureSpirit';
+export { fetchSpirits } from './fetchSpirits';
 

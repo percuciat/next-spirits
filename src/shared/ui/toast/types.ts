@@ -6,9 +6,11 @@ export interface IToast {
   message: string;
 }
 
+export type TAddTost = (type: TToastType, message: string) => void;
+
 export interface IToastContextValue {
   toasts: IToast[];
-  addToast: (type: TToastType, message: string) => void;
+  addToast: TAddTost;
   removeToast: (id: string) => void;
 }
 
@@ -16,4 +18,3 @@ export interface IToastContainerProps {
   toasts: IToast[];
   onRemove: (id: string) => void;
 }
-
